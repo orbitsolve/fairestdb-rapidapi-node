@@ -1,0 +1,27 @@
+{
+  "name": "fairestdb-rapidapi-node",
+  "version": "1.0.0",
+  "description": "Nodejs example on how to use FaiRESTdb using a RapidAPI account",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "serve": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orbitsolve/fairestdb-rapidapi-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orbitsolve/fairestdb-rapidapi-node/issues"
+  },
+  "homepage": "https://github.com/orbitsolve/fairestdb-rapidapi-node#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "unirest": "^0.6.0"
+  }
+}
