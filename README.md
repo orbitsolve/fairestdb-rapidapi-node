@@ -28,7 +28,7 @@ Create database **library**
         "name": "library"
     }
 
-Create Model **book**
+Create Model **book** in **library**
 
     POST: http://localhost:3000/library/_create-model
     Body: {
@@ -47,7 +47,7 @@ Create Model **book**
         }
     }
 
-Add new Entity
+Add new Entity in **book**
 
     POST: http://localhost:3000/library/book
     Body: {
@@ -61,19 +61,19 @@ Get all Databases
 
     GET: http://localhost:3000
 
-Get all Models
+Get all Models in **library**
 
     GET: http://localhost:3000/library
     
-Get all Entities
+Get all Entities in **book**
 
     GET: http://localhost:3000/library/book
 
-Get Entity by Id
+Get Entity by Id in **book**
 
     GET: http://localhost:3000/library/book/_id/book1610945692322
 
-Update an existing Entity
+Update an existing Entity in **book**
 
     PUT: http://localhost:3000/library/book
     Body: {
@@ -93,4 +93,4 @@ Delete Model **book**
 
 Delete Database **library**
 
-    GET: http://localhost:3000/library
+    DELETE: http://localhost:3000/library
