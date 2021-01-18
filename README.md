@@ -13,6 +13,8 @@ This code shows you how to call FaiRESTdb API endpoints from server code using y
     npm install
     npm run serve
 
+Once started successfully, you can access endpoints using URL http://localhost:3000
+
 ## Configure API Key
 You can create .env file and add your RapidAPI-Key as given below
 
