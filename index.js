@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 
 // loading .env, if exists
@@ -9,24 +10,45 @@ require('dotenv').config({ path: ".env" });
 const myApiKey = process.env.API_KEY || "your-RapidAPI-key";
 const port = process.env.PORT || 3000;
 
-const dbRouter = require('./routes/database');
-const modelRouter = require('./routes/model');
-const entityRouter = require('./routes/entity');
+// parse application/json
+app.use(bodyParser.json())
 
-app.use('/get-databases', function (req, res, next) {
+const getRouter = require('./routes/gets');
+const postRouter = require('./routes/posts');
+const putRouter = require('./routes/puts');
+const deleteRouter = require('./routes/deletes');
+
+// Get all Databases/Models/Entities
+app.get('*', function (req, res, next) {
     req.apiKey = myApiKey;
     next();
-}, dbRouter);
+}, getRouter);
 
-app.use('/get-models', function (req, res, next) {
+// Create Database/Model/Entity
+app.post('*', function (req, res, next) {
     req.apiKey = myApiKey;
     next();
-}, modelRouter);
+}, postRouter);
 
-app.use('/get-entities', function (req, res, next) {
+// Update Entities
+app.put('*', function (req, res, next) {
     req.apiKey = myApiKey;
     next();
-}, entityRouter);
+}, putRouter);
+
+// Delete Entity/Model/Database
+app.delete('*', function (req, res, next) {
+    req.apiKey = myApiKey;
+    next();
+}, deleteRouter);
+
+// Global Error handling
+app.use(function (err, req, res, next) {
+    return res.status(err.statusCode || 500).json({
+        errorCode: err.statusCode || 500,
+        errorMessage: err.message
+    });
+});
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
